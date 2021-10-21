@@ -13,6 +13,9 @@ def minimumWaitingTime(queries):
     and the last query would have to wait the duration of the first two queries before being executed.
     Note: you're allowed to mutate the input array.
     """
-
-
-pass
+    queries.sort()
+    min_wait = 0
+    for idx, duration in enumerate(queries):
+        queriesLeft = len(queries) - (idx + 1)
+        min_wait += duration * queriesLeft
+    return min_wait
